@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/main.dart';
 
 class Question extends StatelessWidget {
   // ignore: prefer_typing_uninitialized_variables
@@ -15,7 +16,8 @@ class Question extends StatelessWidget {
       child: Text(
         questionText,
         // ignore: prefer_const_constructors
-        style: TextStyle(fontSize: 20),
+        style: TextStyle(
+            fontSize: 25, color: bodyColorBlack, fontWeight: FontWeight.bold),
         textAlign: TextAlign.center,
       ),
     );

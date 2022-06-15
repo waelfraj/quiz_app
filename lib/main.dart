@@ -1,10 +1,7 @@
 // ignore_for_file: deprecated_member_use, prefer_const_constructors
-
 import 'package:flutter/material.dart';
-import 'package:quiz_app/answer.dart';
 import 'package:quiz_app/quiz.dart';
 import 'package:quiz_app/result.dart';
-import 'question.dart';
 
 main() => runApp(MyApp());
 
@@ -16,15 +13,20 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
+Color bodyColorWhite = Colors.white;
+Color bodyColorBlack = Colors.black;
+
 class _MyAppState extends State<MyApp> {
+  bool isSwitched = false;
+
   int _totalScore = 0;
   int _questionIndex = 0;
 
   void answerQuestion(int score) {
-    _totalScore += score;
     setState(() {
       _questionIndex += 1;
     });
+    _totalScore += score;
   }
 
   void _resetQuiz() {
@@ -68,13 +70,37 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(
-        title: Text('Programing Language Quiz App'),
+        title: Text(
+          'Programing Language Quiz App',
+          style: TextStyle(color: bodyColorWhite),
+        ),
+        actions: <Widget>[
+          Switch(
+            value: isSwitched,
+            onChanged: (value) {
+              setState(() {
+                isSwitched = value;
+                if (isSwitched) {
+                  bodyColorWhite = Colors.black;
+                  bodyColorBlack = Colors.white;
+                } else {
+                  bodyColorWhite = Colors.white;
+                  bodyColorBlack = Colors.black;
+                }
+              });
+            },
+            activeColor: Colors.white,
+            inactiveThumbColor: Colors.black,
+            inactiveTrackColor: Colors.white,
+          )
+        ],
       ),
       // ignore: avoid_unnecessary_containers
       body: Container(
+          color: bodyColorWhite,
           child: _questionIndex < _questions.length
               ? Quiz(_questions, _questionIndex, answerQuestion)
-              : Result(_resetQuiz)),
+              : Result(_resetQuiz, _totalScore)),
     ));
   }
 }

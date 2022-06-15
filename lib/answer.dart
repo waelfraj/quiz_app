@@ -14,20 +14,21 @@ class Answer extends StatelessWidget {
   Widget build(BuildContext context) {
     // ignore: sized_box_for_whitespace
     return Container(
-      width: double.infinity,
-      // ignore: prefer_const_constructors
-      margin: EdgeInsets.all(7.0),
-      child: RaisedButton(
-        color: Colors.blue,
-        textColor: Colors.white,
-        onPressed: x,
+        margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+        width: double.infinity,
         // ignore: prefer_const_constructors
-        child: Text(
-          answerText,
-          // ignore: prefer_const_constructors
-          style: TextStyle(fontSize: 15),
-        ),
-      ),
-    );
+
+        child: Container(
+          margin: const EdgeInsets.symmetric(vertical: 5),
+          child: ElevatedButton(
+            onPressed: x,
+            // ignore: prefer_const_constructors
+            child: Text(
+              answerText,
+              // ignore: prefer_const_constructors
+              style: TextStyle(fontSize: 20),
+            ),
+          ),
+        ));
   }
 }
