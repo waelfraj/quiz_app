@@ -23,7 +23,7 @@ class Answer extends StatelessWidget {
         onPressed: x,
         // ignore: prefer_const_constructors
         child: Text(
-          'Answer 1',
+          answerText,
           // ignore: prefer_const_constructors
           style: TextStyle(fontSize: 15),
         ),
